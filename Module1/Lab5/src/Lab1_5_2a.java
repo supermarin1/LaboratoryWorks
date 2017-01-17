@@ -1,6 +1,7 @@
 /**
- * Created by Maringa on 16.01.2017.
+ *
  */
+
 import java.util.Scanner;
 
 public class Lab1_5_2a {
