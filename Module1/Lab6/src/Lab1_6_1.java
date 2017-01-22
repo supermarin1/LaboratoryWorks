@@ -1,5 +1,4 @@
 import java.util.Arrays;
-
 /**
  *Writing simple console application, using array and loop.
  */
