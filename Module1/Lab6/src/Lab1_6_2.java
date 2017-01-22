@@ -14,7 +14,7 @@ public class Lab1_6_2 {
         System.out.println("the minimum value is " + array[0]);
         System.out.println("the maximum value is " + array[array.length-1]);
 
-        int sum = 0;
+        float sum = 0;
         for (int i : array) {
             sum += i;
         }
