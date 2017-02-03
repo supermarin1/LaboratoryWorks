@@ -11,7 +11,6 @@ public class Lab2_4_4 {
 
         System.out.println("There are " + Employee.numberOfEmployee + " avengers registered.");
     }
-
 }
 
 class Employee{
