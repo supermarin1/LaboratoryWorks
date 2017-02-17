@@ -44,9 +44,10 @@ public class Main {
 
         System.out.println("       * * *       ");
 
-        System.out.println("Sum of Circle areas is:  " + sumCircleArea);
-        System.out.println("Sum of Rectangle areas is:  " + sumRectangleArea);
-        System.out.println("Sum of Triangle areas is:  " + sumTriangleArea);
+        System.out.println("Sum of " + Circle.getCountOfCircles() + " Circle areas is:  " + sumCircleArea);
+        System.out.println("Sum of " + Rectangle.getCountOfRectangles() + " Rectangle areas is:  " + sumRectangleArea);
+        System.out.println("Sum of " + Triangle.getCountOfTringles() + " Triangle areas is:  " + sumTriangleArea);
+
     }
 
     private static Shape[] addShape(Shape[] shapes, Shape newShape) {

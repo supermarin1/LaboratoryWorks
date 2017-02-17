@@ -12,12 +12,12 @@ public class Triangle extends Shape {
 
     public Triangle(String color, double a, double b, double c) {
         super(color);
-        countOfTringles++;
         if (((a + b) <= c) || ((a + c) <= b) || ((b + c) <= a)) {
-            System.out.println("ATTENTION!!! Invalid input. Triangle number " + countOfTringles + "\n");
+            System.out.println("ATTENTION!!! Invalid input. Shape number " + getCountOfShapes() + "\n");
             setShapeColor("no color");
              isValid = false;
         } else {
+            countOfTringles++;
             this.a = a;
             this.b = b;
             this.c = c;
