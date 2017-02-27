@@ -7,10 +7,10 @@ public class Monitor extends Device {
     private int resolutionX;
     private int resolutionY;
 
-    public Monitor (){
-        super();
-        this.resolutionX = getCount()*1010;
-        this.resolutionY = this.getResolutionX()+1000;
+    public Monitor(String manufacturer, float price, String serialNumber, int resolutionX, int resolutionY) {
+        super(manufacturer, price, serialNumber);
+        this.resolutionX = resolutionX;
+        this.resolutionY = resolutionY;
     }
 
     @Override

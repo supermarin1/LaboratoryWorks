@@ -10,11 +10,11 @@ public class Device {
 
     private static int count = 0;
 
-    public Device(){
+    public Device(String manufacturer, float price, String serialNumber) {
         count ++;
-        this.manufacturer = "Samsung";
-        this.price = count*11;
-        this.serialNumber = "SM0000" + count;
+        this.manufacturer = manufacturer;
+        this.price = price;
+        this.serialNumber = serialNumber;
     }
 
     @Override

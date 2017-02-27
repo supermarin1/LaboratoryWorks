@@ -7,10 +7,10 @@ public class EthernetAdapter extends Device {
     private int speed;
     private int mac;
 
-    public EthernetAdapter (){
-        super();
-        this.speed = getCount()*2;
-        this.mac = getCount()*10_000;
+    public EthernetAdapter(float price, String serialNumber, int speed, int mac) {
+        super("TP-LINK", price, serialNumber);
+        this.speed = speed;
+        this.mac = mac;
     }
 
     @Override
