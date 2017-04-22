@@ -20,6 +20,7 @@ public class Computer {
         ", цена: " + getPrice() + ", кол-во: " + getQuantityCPU()+ ", частота " + getFrecuencyCPU());
     }
 
+
     public String getManufacturer() {
         return manufacturer;
     }

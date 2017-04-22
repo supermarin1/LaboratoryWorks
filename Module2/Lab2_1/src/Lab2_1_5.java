@@ -13,5 +13,6 @@ public class Lab2_1_5 {
         for (Computer computer : comp) {
             computer.view();
         }
+
     }
 }

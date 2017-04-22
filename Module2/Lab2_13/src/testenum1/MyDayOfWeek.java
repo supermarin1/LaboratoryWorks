@@ -4,6 +4,7 @@ package testenum1;
  *
  */
 public enum MyDayOfWeek {
+
     SUNDAY("Is Java Day"),
     MONDAY,
     TUESDAY,
