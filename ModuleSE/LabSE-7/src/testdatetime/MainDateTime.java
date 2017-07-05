@@ -15,7 +15,7 @@ public class MainDateTime {
 
         System.out.println("I was born on " + birthday.getDayOfWeek().toString().toLowerCase());
         LocalDate thisYearBrthd = LocalDate.of(2017, birthday.getMonth(), birthday.getDayOfMonth());
-        System.out.println("It will be on " + thisYearBrthd.getDayOfWeek().toString().toLowerCase() + " this year");
+        System.out.println("My b-day is on " + thisYearBrthd.getDayOfWeek().toString().toLowerCase() + " this year");
 
         //determine was whether this year's birthday
         if (age < (now.getYear() - birthday.getYear())) {

@@ -1,4 +1,4 @@
-Sidorenko:102
+Sidorenko:100
 Petenko:8
 Oleg:9
 Korol:2

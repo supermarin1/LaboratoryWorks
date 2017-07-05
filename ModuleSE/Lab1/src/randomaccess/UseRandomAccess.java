@@ -12,8 +12,10 @@ public class UseRandomAccess {
 
         try {
             RandomAccessFile file = new RandomAccessFile(filePath, "rw");
-            testUsers("Ololoev", file);
-            printFile(file);
+            file.seek(5);
+            file.writeBytes("12345");
+//            testUsers("Sidorenko", file);
+//            printFile(file);
         } catch (IOException e) {
             e.printStackTrace();
         }

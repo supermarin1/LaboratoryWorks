@@ -1,8 +1,6 @@
 package demoguiswing;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -35,12 +33,12 @@ public class MyApp extends JFrame {
     private JLabel secondLbl;
 
 
-    public MyApp(String title) throws HeadlessException {
+    MyApp(String title) throws HeadlessException {
         super(title);
         this.setLocation(100, 100);
         this.setSize(600, 300);
         this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     void createMenu() {
@@ -71,7 +69,7 @@ public class MyApp extends JFrame {
         this.firstBut = new JButton("Get_User_Name");
         firstPnl.add(firstTxtFld);
         firstPnl.add(firstBut);
-        firstPnl.setLayout(new FlowLayout(0, 10, 10));
+        firstPnl.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
 
         this.secondPnl = new JPanel();
         //secondPnl.setBackground(Color.ORANGE);
@@ -79,7 +77,7 @@ public class MyApp extends JFrame {
         this.secondTxtFld = new JTextField(20);
         secondPnl.add(secondLbl);
         secondPnl.add(secondTxtFld);
-        secondPnl.setLayout(new FlowLayout(0, 10, 10));
+        secondPnl.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
 
 
         this.thirdPnl = new JPanel();
@@ -88,7 +86,7 @@ public class MyApp extends JFrame {
         this.thirdBut = new JButton("Get_Comp_Name");
         thirdPnl.add(thirdTxtFld);
         thirdPnl.add(thirdBut);
-        thirdPnl.setLayout(new FlowLayout(0, 10, 10));
+        thirdPnl.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
 
         mainPnl.add(firstPnl);
         mainPnl.add(secondPnl);
@@ -99,21 +97,13 @@ public class MyApp extends JFrame {
     }
 
     void buttonActions() {
-        firstBut.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                firstTxtFld.setText(System.getProperty("user.name"));
-            }
-        });
+        firstBut.addActionListener(e -> firstTxtFld.setText(System.getProperty("user.name")));
 
-        thirdBut.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    thirdTxtFld.setText(InetAddress.getLocalHost().getHostName());
-                } catch (UnknownHostException e1) {
-                    e1.printStackTrace();
-                }
+        thirdBut.addActionListener(e -> {
+            try {
+                thirdTxtFld.setText(InetAddress.getLocalHost().getHostName());
+            } catch (UnknownHostException e1) {
+                e1.printStackTrace();
             }
         });
     }
@@ -133,7 +123,7 @@ public class MyApp extends JFrame {
             nameDialog.add(dialogTxtFld);
             nameDialog.add(dialogBut);
 
-            nameDialog.setLayout(new FlowLayout(0,10,10));
+            nameDialog.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
             nameDialog.pack();
             nameDialog.setVisible(true);
 
