@@ -1,4 +1,4 @@
-Module2 Java Basics & OOP:  
+Module2 Java Basics & OOP:    
   Lab2_1 - Classes and Instances  
   Lab2_2 - Methods, Lab2_3 - The Constructors  
   Lab2_4 - Static Elements  
