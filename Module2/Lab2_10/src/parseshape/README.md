@@ -1,6 +1,6 @@
 Task description  
   
-  2-10-4  
+  2-10-3  
   Open project MyShapes (from 2.8 labs).  
   Rewrite the class Shape to add new public static method called parseShape(String) which returns new object as Shape (one of shapes, such as triangle, rectangle and so on) based on string passed as argument. 
   Example of possible strings:  
