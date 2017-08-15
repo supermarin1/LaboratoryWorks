@@ -6,9 +6,9 @@ package testthread1;
 public class MySecondTimeBomb implements Runnable {
     @Override
     public void run() {
-        System.out.println(Thread.currentThread().getName()+ " is started");
-        for (int i = 10; i > 0; i--){
-            System.out.println(i);
+        System.out.println(Thread.currentThread().getName() + " is started");
+        for (int i = 10; i > 0; i--) {
+            System.out.println(Thread.currentThread().getName() + "- count " + i);
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -16,6 +16,6 @@ public class MySecondTimeBomb implements Runnable {
             }
         }
         System.out.println("Boom!!");
-        System.out.println(Thread.currentThread().getName()+ " ends");
+        System.out.println(Thread.currentThread().getName() + " ends");
     }
 }

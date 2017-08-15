@@ -7,10 +7,11 @@ class MyFirstTimeBomb extends Thread {
     @Override
     public void run() {
         System.out.println(Thread.currentThread().getName() + " is started");
-        for (int i = 10; i > 0; i--){
-            System.out.println(i);
+
+        for (int i = 10; i > 0; i--) {
+            System.out.println(Thread.currentThread().getName() + "- count " + i);
             try {
-                Thread.sleep(1000);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
