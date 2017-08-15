@@ -13,46 +13,35 @@ import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 
-/**
- *
- */
 public class MyClient {
-    public static void main(String[] args) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
-        Student outStudent = new Student("Andrey", "Java", 1);
+    public static void main(String[] args) throws NoSuchPaddingException, NoSuchAlgorithmException,
+            InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
 
+        String[] names = new String[]{"Oleg1", "Anton1", "Ihor1", "Oleksiy1", "Ivan1", "Pavlo1", "Nataliia1"};
+        for (String name : names) {
+            try (Socket s = new Socket("localhost", 6666)) {
 
-        try (Socket s = new Socket("10.11.0.224",6666)) {
+                System.out.println("Client1: data to be sent: " + name);
+                byte[] output = name.getBytes();
 
-            String name = outStudent.getName();
-            System.out.println(name);
+                ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
+                System.out.println("Client1: Key received");
+                Key publicKey = (Key) ois.readObject();
+                Cipher cipher = Cipher.getInstance("RSA");
+                cipher.init(Cipher.ENCRYPT_MODE, publicKey);
 
-            byte[] output = name.getBytes();
+                byte[] encrData = cipher.doFinal(output);
+                ObjectOutputStream dout = new ObjectOutputStream(s.getOutputStream());
+                dout.writeObject(encrData);
+                System.out.println("Client1: Encrypted data sent");
 
-            ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
-            System.out.println("ok");
+                Thread.sleep(3000);
 
-            Key publicKey = (Key) ois.readObject();
-            Cipher cipher = Cipher.getInstance("RSA");
-            cipher.init(Cipher.ENCRYPT_MODE, publicKey);
-            byte[] encrData = cipher.doFinal(output);
-            String sended = new String(encrData);
-            System.out.println("sended" + " " + sended);
-
-            ObjectOutputStream dout = new ObjectOutputStream(s.getOutputStream());
-            dout.writeObject(encrData);
-
-//            ObjectInputStream dis = new ObjectInputStream(s.getInputStream());
-//            Student answer = (Student) dis.readObject();
-//            System.out.println(answer);
-            ois.close();
-            dout.flush();
-            dout.close();
-//            dis.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+                dout.flush();
+                dout.close();
+            } catch (IOException | ClassNotFoundException | InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

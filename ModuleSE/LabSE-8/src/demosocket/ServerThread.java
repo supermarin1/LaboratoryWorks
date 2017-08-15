@@ -1,35 +1,37 @@
 package demosocket;
 
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-/**
- *
- */
-public class ServerThread extends Thread{
-    Student student;
+public class ServerThread extends Thread {
     private Socket socket;
 
-    public ServerThread (Socket socket){
+    ServerThread(Socket socket) {
         this.socket = socket;
         this.start();
     }
 
     @Override
     public void run() {
-        ObjectInputStream ois = null;
+        Security security = new Security();
         try {
-            ois = new ObjectInputStream(socket.getInputStream());
-            Student inStudent = (Student) ois.readObject();
-            System.out.println(inStudent.toString());
+            ObjectOutputStream ous = new ObjectOutputStream(socket.getOutputStream());
+            ous.writeObject(security.getPublicKey());
+            System.out.println("key sent " + Thread.currentThread().getName());
 
-            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-            oos.writeObject("recieved student: " + inStudent.getName());
-        } catch (IOException | ClassNotFoundException e) {
+            ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+            byte[] encr = (byte[]) ois.readObject();
+            String decr = security.decryptKey(encr);
+
+            System.out.println("received decrypted data: " + decr);
+
+            ous.flush();
+            ous.close();
+            socket.close();
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }
